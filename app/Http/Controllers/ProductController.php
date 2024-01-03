@@ -15,36 +15,52 @@ class ProductController extends Controller
         //dd($products);
         return view('content.welcome',compact('products'));
     }
+    // public function productSearch(Request $req){
+    //     if($req->ajax()){
+    //         $output = '';
+    //         $query = $req->get('query');
+    //         if($query != '') {
+    //             $data = $this->productModel->search($query);
+    //         } else {
+    //             $data = null;
+    //         }
+    //         //$total_row = $data->count();
+    //         if($data){
+    //             foreach($data as $row)
+    //             {
+    //                 $output .= '
+    //                 <tr>
+    //                     <td>'.$row->id.'</td>
+    //                     <td>'.$row->name.'</td>
+    //                     <td>'.$row->size.'</td>
+    //                     <td>'.$row->color.'</td>
+    //                 </tr>
+    //                 ';
+    //             }
+    //         } else {
+    //             $output = '
+    //             ';
+    //         }
+    //         $data = array(
+    //             'table_data'  => $output
+    //         );
+    //         return json_encode($data);
+    //     }
+    // }
     public function productSearch(Request $req){
         if($req->ajax()){
-            $output = '';
             $query = $req->get('query');
             if($query != '') {
                 $data = $this->productModel->search($query);
             } else {
                 $data = null;
             }
-            //$total_row = $data->count();
             if($data){
-                foreach($data as $row)
-                {
-                    $output .= '
-                    <tr>
-                    <td>'.$row->id.'</td>
-                    <td>'.$row->name.'</td>
-                    <td>'.$row->size.'</td>
-                    <td>'.$row->color.'</td>
-                    </tr>
-                    ';
-                }
-            } else {
-                $output = '
-                ';
+                return view('table.searchingResult', compact('data'));
             }
-            $data = array(
-                'table_data'  => $output
-            );
-            echo json_encode($data);
+            else{
+                return null;
+            }
         }
     }
 }
