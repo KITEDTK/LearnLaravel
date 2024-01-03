@@ -16,7 +16,12 @@ class CheckLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        echo 'middleware req';
+        if($this->isLogin() === true){
+            return redirect(route('home'));
+        }
         return $next($request);
+    }
+    public function isLogin(){
+        return true;
     }
 }

@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Models\User;
-use App\Controllers\AdminController;
+use App\Http\Controllers\AdminController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,7 +16,7 @@ use App\Controllers\AdminController;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home');
 
 Route::get('/unicode', function () {
     $user = new User();
@@ -25,5 +25,5 @@ Route::get('/unicode', function () {
 });
 
 Route::prefix('admin')->group(function(){
-    Route::get('/', [AdminController::class,'index']);
+    Route::get('/', [AdminController::class,'index'])->middleware('auth.login');
 });
