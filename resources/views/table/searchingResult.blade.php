@@ -8,7 +8,7 @@
 @foreach($data as $r)
 <tr>
     <td>{{$r->id}}</td>
-    <td>{{$r->name}}</td>
+    <td>{{$r->model->name}}</td>
     <td>{{$r->size}}</td>
     <td>{{$r->color}}</td>
 </tr>

@@ -2,27 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\ProductModel;
 use Illuminate\Http\Request;
 use App\Models\ModelModel;
 use App\Models\ClothesModel;
 
 class ProductController extends Controller
 {
-    public function __construct(){
-        $this->productModel = new ProductModel();
-    }
     public function productDisplay(){
-        // $products = $this->productModel->getAllProduct();
-        $products = ClothesModel::all();;
-        //dd($products);
+        $products = ClothesModel::all();       
         return view('content.welcome',compact('products'));
     }
     public function productSearch(Request $req){
         if($req->ajax()){
-            $query = $req->get('query');
-            if($query != '') {
-                $data = $this->productModel->search($query);
+            $inf = $req->get('query');
+            if($inf != '') {
+                $data = ClothesModel::search($inf);
             } else {
                 $data = null;
             }
@@ -32,6 +26,9 @@ class ProductController extends Controller
             else{
                 return null;
             }
+        }
+        if($req->ajax()){
+            $inf = $req->get('query');
         }
     }
 }
