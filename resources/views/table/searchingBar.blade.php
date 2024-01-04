@@ -1,23 +1,14 @@
 <input type="text" id="myInput" name="myInput" placeholder="Search for names..">
 
-<table id="myTable">
-  <tr class="header">
-    <th style="width:25%;">Code</th>
-    <th style="width:25%;">Model Name</th>
-    <th style="width:25%;">Size</th>
-    <th style="width:25%;">Color</th>
-  </tr>
-<div class="search-result" id="search-result">
-   
-</div>
+<div id = "search-result">
 
-</table> 
+</div>
 <script>
 $(document).ready(function() {
         $('#myInput').on('keyup', function() {
             var query = $(this).val();
             $.ajax({
-                url: "/search",
+                url: "search",
                 type: "GET",
                 data: {
                     'query': query,

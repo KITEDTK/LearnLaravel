@@ -22,6 +22,7 @@ class ProductModel extends Model
             ->where('clothes.id', 'like', "%$query%")
             ->orWhere('model.name', 'like', "%$query%")
             ->orWhere('clothes.color', 'like', "%$query%")
+            ->orWhere('clothes.size', 'like', "%$query%")
             ->get();
     }
     
