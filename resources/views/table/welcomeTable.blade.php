@@ -13,7 +13,7 @@
       @foreach ($products as $p)
       <tr>
         <td>{{$p->id}}</td>
-        <td>{{$p->name}}</td>
+        <td>{{$p->model->name}}</td>
         <td>{{$p->size}}</td>
         <td>{{$p->color}}</td>
         <td>{{$p->quanity}}</td>

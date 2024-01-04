@@ -9,10 +9,13 @@ use Illuminate\Support\Facades\DB;
 class ProductModel extends Model
 {
     use HasFactory;
+    protected $table ='clothes';
+    protected $id = 'id';
     public function getAllProduct(){
         return DB::table('clothes')
         ->join('model','model.id','=','clothes.modelId')
         ->select('clothes.*','model.name as name')
+        ->or
         ->get();
     }
     public function search($query)

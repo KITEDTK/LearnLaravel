@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\ProductModel;
 use Illuminate\Http\Request;
+use App\Models\ModelModel;
+use App\Models\ClothesModel;
 
 class ProductController extends Controller
 {
@@ -11,7 +13,8 @@ class ProductController extends Controller
         $this->productModel = new ProductModel();
     }
     public function productDisplay(){
-        $products = $this->productModel->getAllProduct();
+        // $products = $this->productModel->getAllProduct();
+        $products = ClothesModel::all();;
         //dd($products);
         return view('content.welcome',compact('products'));
     }
