@@ -17,15 +17,13 @@ class ProductController extends Controller
             $inf = $req->get('query');
             if($inf != '') {
                 $data = ClothesModel::search($inf);
+                if($data !== null){
+                    return view('table.searchingResult', compact('data'));
+                }
             } else {
-                $data = null;
-            }
-            if($data !== null){
-                return view('table.searchingResult', compact('data'));
-            }
-            else{
                 return null;
             }
+            
         }
         if($req->ajax()){
             $inf = $req->get('query');
