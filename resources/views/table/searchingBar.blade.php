@@ -1,8 +1,6 @@
 <input type="text" id="myInput" name="myInput" placeholder="Search for names..">
 
-<div id = "search-result">
-
-</div>
+<div id = "search-result"></div>
 <script>
 $(document).ready(function() {
         $('#myInput').on('keyup', function() {
