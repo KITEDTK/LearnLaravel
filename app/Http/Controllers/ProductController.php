@@ -10,7 +10,7 @@ class ProductController extends Controller
 {
     public function productDisplay(){
         $products = ClothesModel::all();       
-        return view('content.welcome',compact('products'));
+        return view('extend.welcome',compact('products'));
     }
     public function productSearch(Request $req){
         if($req->ajax()){

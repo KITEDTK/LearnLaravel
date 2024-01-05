@@ -1,0 +1,10 @@
+@extends('welcome')
+@section('table')
+@include('content.welcomeTable')
+@endsection
+@section('add')
+@include('content.welcomeAdd')
+@endsection
+@section('edit')
+@include('')
+@endsection
